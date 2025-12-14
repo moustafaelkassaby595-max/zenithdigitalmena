@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/5 blur-3xl"></div>
+      <div class="absolute top-32 -right-24 h-72 w-72 rounded-full bg-white/5 blur-3xl"></div>
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+    </div>
+
+    <div class="mx-auto max-w-6xl px-6 pt-16 pb-10 relative">
+      <p class="text-sm text-white/60 tracking-wide reveal">About</p>
+
+      <h1 class="mt-5 text-4xl md:text-6xl font-semibold tracking-tight leading-tight reveal">
+        A focused partner for modern digital execution.
+      </h1>
+
+      <p class="mt-6 max-w-2xl text-lg text-white/75 reveal">
+        Zenith Digital MENA helps startups, SMBs, and enterprise teams design, build, and grow.
+        We combine strategy, brand, engineering, marketing, and practical AI—so you can move fast
+        without sacrificing quality.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3 reveal">
+        <a
+          href="mailto:contact@zenithdigital.me"
+          class="rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-white/90"
+        >
+          contact@zenithdigital.me
+        </a>
+        <a
+          href="/services"
+          class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-white hover:border-white/30"
+        >
+          View services
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="rounded-2xl border border-white/10 p-6 reveal">
+        <p class="text-sm text-white/60">What we value</p>
+        <h2 class="mt-3 text-xl font-semibold tracking-tight">Clarity</h2>
+        <p class="mt-2 text-sm text-white/70">
+          Simple decisions, clean scope, and visible progress.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 p-6 reveal">
+        <p class="text-sm text-white/60">How we build</p>
+        <h2 class="mt-3 text-xl font-semibold tracking-tight">Craft</h2>
+        <p class="mt-2 text-sm text-white/70">
+          Premium design and thoughtful engineering.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 p-6 reveal">
+        <p class="text-sm text-white/60">How we win</p>
+        <h2 class="mt-3 text-xl font-semibold tracking-tight">Outcomes</h2>
+        <p class="mt-2 text-sm text-white/70">
+          Work that performs: speed, conversion, growth, efficiency.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-10">
+    <div class="rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10 reveal">
+      <h2 class="text-2xl font-semibold tracking-tight">How we work</h2>
+      <p class="mt-3 text-white/75 max-w-2xl">
+        A small, senior team. Clear communication. Tight iterations. High standards.
+      </p>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-white/70">
+        <div class="rounded-2xl border border-white/10 p-5">
+          <p class="text-white/90 font-medium">1) Align</p>
+          <p class="mt-2">Goals, scope, timeline, success metrics.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 p-5">
+          <p class="text-white/90 font-medium">2) Build</p>
+          <p class="mt-2">Design + implementation with fast feedback.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 p-5">
+          <p class="text-white/90 font-medium">3) Launch</p>
+          <p class="mt-2">Ship, measure, refine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) e.target.classList.add('in');
+      }
+    }, { threshold: 0.12 });
+    els.forEach((el) => io.observe(el));
+  </script>
+
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</Layout>
+

@@ -2,20 +2,42 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  locale?: string;
+}
+
+const {
+  title = 'Zenith Digital MENA',
+  description = "A digital studio engineering brand systems, products, and intelligent automation for the GCC's most ambitious operators.",
+  ogImage = '/og-default.png',
+  canonical,
+  locale = 'en',
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Zenith Digital MENA</title>
-    <meta
-      name="description"
-      content="Zenith helps startups, SMBs, and enterprises design, build, and scale modern digital experiences across web, product, and AI."
-    />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
-<meta name="theme-color" content="#000000" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+    <meta name="theme-color" content="#000000" />
   </head>
   <body class="bg-black text-white antialiased">
     <Header />

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zenithdigitalmena.com/sitemap-index.xml

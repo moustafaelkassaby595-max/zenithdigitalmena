@@ -1,0 +1,27 @@
+---
+import strings from '../i18n/strings.json';
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const pathname = Astro.url.pathname;
+
+const enPath = locale === 'ar' ? (pathname.replace(/^\/ar/, '') || '/') : pathname;
+const arPath = locale === 'ar' ? pathname : ('/ar' + (pathname === '/' ? '/' : pathname));
+
+const s = strings[locale as 'en' | 'ar'].switcher;
+---
+
+<div class="flex items-center gap-1.5 text-sm ml-3">
+  <a
+    href={enPath}
+    class={locale === 'en' ? 'text-white underline underline-offset-2' : 'text-white/50 hover:text-white transition-colors'}
+  >{s.en}</a>
+  <span class="text-white/25">/</span>
+  <a
+    href={arPath}
+    class={locale === 'ar' ? 'text-white underline underline-offset-2' : 'text-white/50 hover:text-white transition-colors'}
+  >{s.ar}</a>
+</div>

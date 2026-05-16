@@ -1,0 +1,48 @@
+{
+  "en": {
+    "nav": {
+      "services": "Services",
+      "work": "Work",
+      "about": "About",
+      "blog": "Blog",
+      "contact": "Contact",
+      "email_cta": "Email"
+    },
+    "footer": {
+      "studio_name": "Zenith Digital MENA",
+      "copyright": "Zenith. All rights reserved."
+    },
+    "switcher": {
+      "en": "EN",
+      "ar": "ع"
+    },
+    "ar_stub": {
+      "notice": "Translation coming soon — switch to English →",
+      "subhead": "This page is not yet available in Arabic. You can read the English version below.",
+      "cta": "Read in English →"
+    }
+  },
+  "ar": {
+    "nav": {
+      "services": "الخدمات",
+      "work": "أعمالنا",
+      "about": "من نحن",
+      "blog": "المدونة",
+      "contact": "تواصل معنا",
+      "email_cta": "راسلنا"
+    },
+    "footer": {
+      "studio_name": "Zenith Digital MENA",
+      "copyright": "Zenith. جميع الحقوق محفوظة."
+    },
+    "switcher": {
+      "en": "EN",
+      "ar": "ع"
+    },
+    "ar_stub": {
+      "notice": "الترجمة العربية قيد الإعداد",
+      "subhead": "نعمل حالياً على ترجمة هذه الصفحة. في غضون ذلك، يمكنك قراءة النسخة الإنجليزية.",
+      "cta": "اقرأ بالإنجليزية ←"
+    }
+  }
+}

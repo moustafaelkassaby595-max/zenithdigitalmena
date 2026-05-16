@@ -1,17 +1,32 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import strings from '../i18n/strings.json';
+
+interface Props {
+  locale?: string;
+}
+
+const { locale = 'en' } = Astro.props;
+const s = strings[locale as 'en' | 'ar'].nav;
+const logoHref = locale === 'ar' ? '/ar/' : '/';
+const navPrefix = locale === 'ar' ? '/ar' : '';
+---
+
 <header class="border-b border-white/10">
   <div class="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
-    <a href="/" class="flex items-baseline gap-2">
-  <span class="text-base font-semibold tracking-tight">Zenith</span>
-  <span class="text-xs text-white/60 tracking-[0.18em] uppercase">Digital MENA</span>
-</a>
+    <a href={logoHref} dir="ltr" class="flex items-baseline gap-2">
+      <span class="text-base font-semibold tracking-tight">Zenith</span>
+      <span class="text-xs text-white/60 tracking-[0.18em] uppercase">Digital MENA</span>
+    </a>
     <nav class="flex items-center gap-5 text-sm text-white/80">
-      <a class="hover:text-white" href="/services">Services</a>
-      <a class="hover:text-white" href="/work">Work</a>
-      <a class="hover:text-white" href="/about">About</a>
-      <a class="hover:text-white" href="/blog">Blog</a>
-      <a class="hover:text-white" href="/contact">Contact</a>
+      <a class="hover:text-white" href={`${navPrefix}/services`}>{s.services}</a>
+      <a class="hover:text-white" href={`${navPrefix}/work`}>{s.work}</a>
+      <a class="hover:text-white" href={`${navPrefix}/about`}>{s.about}</a>
+      <a class="hover:text-white" href={`${navPrefix}/blog`}>{s.blog}</a>
+      <a class="hover:text-white" href={`${navPrefix}/contact`}>{s.contact}</a>
       <a class="ml-2 rounded-full border border-white/15 px-4 py-2 hover:border-white/30 hover:text-white"
-         href="mailto:contact@zenithdigital.me">Email</a>
+         href="mailto:contact@zenithdigital.me">{s.email_cta}</a>
+      <LanguageSwitcher locale={locale} />
     </nav>
   </div>
 </header>

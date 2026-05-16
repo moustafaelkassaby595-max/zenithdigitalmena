@@ -7,6 +7,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://zenithdigitalmena.com',
   integrations: [sitemap()],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'ar'],
+    routing: { prefixDefaultLocale: false },
+    fallback: { ar: 'en' },
+  },
   vite: {
     plugins: [tailwindcss()]
   }

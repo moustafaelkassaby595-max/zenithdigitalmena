@@ -2,6 +2,7 @@
 title: "Why practical AI beats hype for SMEs in MENA"
 description: "A simple framework for choosing AI projects that actually reduce cost, time, and risk."
 pubDate: "2025-12-14"
+layout: ../../layouts/Layout.astro
 ---
 
 # Why practical AI beats hype for SMEs in MENA

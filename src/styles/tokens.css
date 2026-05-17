@@ -130,8 +130,19 @@
   --border-default: var(--color-border-default);
   --border-strong:  var(--color-border-strong);
 
-  /* Type scale — weight, line-height, letter-spacing per role (§2.4)
-     Font sizes live in @theme above as --text-* vars.             */
+  /* Type scale — font sizes (§2.4)
+     Mirrored from @theme into :root so var(--text-*) resolves at
+     runtime. @theme still registers these for Tailwind utility
+     generation (text-hero, text-subtitle, etc.).                  */
+  --text-hero:          clamp(88px, 9.375vw, 120px);
+  --text-section-title: clamp(56px, 5.625vw, 72px);
+  --text-subtitle:      clamp(32px, 3.125vw, 40px);
+  --text-lead:          clamp(20px, 1.719vw, 22px);
+  --text-body:          clamp(16px, 1.328vw, 17px);
+  --text-small:         14px;
+  --text-eyebrow:       clamp(10px, 0.859vw, 11px);
+
+  /* Type scale — weight, line-height, letter-spacing per role (§2.4) */
   --type-hero-weight:   500;
   --type-hero-leading:  0.92;
   --type-hero-tracking: -0.045em;

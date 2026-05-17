@@ -6,11 +6,18 @@
       "about": "About",
       "blog": "Blog",
       "contact": "Contact",
-      "email_cta": "Email"
+      "email_cta": "Email",
+      "practice": "Practice",
+      "thinking": "Thinking",
+      "start_project": "Start a project"
     },
     "footer": {
       "studio_name": "Zenith Digital MENA",
-      "copyright": "Zenith. All rights reserved."
+      "copyright": "Zenith. All rights reserved.",
+      "tagline": "A digital studio engineering brand systems, products, and intelligent automation for the GCC's most ambitious operators.",
+      "made_in_dubai": "Made in Dubai",
+      "email_copied": "Copied!",
+      "linkedin": "LinkedIn"
     },
     "switcher": {
       "en": "EN",
@@ -29,11 +36,18 @@
       "about": "من نحن",
       "blog": "المدونة",
       "contact": "تواصل معنا",
-      "email_cta": "راسلنا"
+      "email_cta": "راسلنا",
+      "practice": "منهجيتنا",
+      "thinking": "مقالاتنا",
+      "start_project": "ابدأ مشروعاً"
     },
     "footer": {
       "studio_name": "Zenith Digital MENA",
-      "copyright": "Zenith. جميع الحقوق محفوظة."
+      "copyright": "Zenith. جميع الحقوق محفوظة.",
+      "tagline": "",
+      "made_in_dubai": "صُنع في دبي",
+      "email_copied": "تم النسخ!",
+      "linkedin": "LinkedIn"
     },
     "switcher": {
       "en": "EN",

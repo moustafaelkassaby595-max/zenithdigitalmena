@@ -12,21 +12,180 @@ const logoHref = locale === 'ar' ? '/ar/' : '/';
 const navPrefix = locale === 'ar' ? '/ar' : '';
 ---
 
-<header class="border-b border-white/10">
-  <div class="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
-    <a href={logoHref} dir="ltr" class="flex items-baseline gap-2">
-      <span class="text-base font-semibold tracking-tight">Zenith</span>
-      <span class="text-xs text-white/60 tracking-[0.18em] uppercase">Digital MENA</span>
+<header id="site-header" class="sticky top-0 z-40 bg-bg-secondary border-b border-border-subtle">
+  <div class="header-inner mx-auto max-w-[1280px] px-[clamp(20px,4vw,56px)] py-5 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href={logoHref} dir="ltr" class="flex items-baseline gap-2 shrink-0">
+      <span class="logo-wordmark font-display text-text-primary font-medium text-body">Zenith</span>
+      <span class="logo-subtitle font-display text-text-quaternary font-normal text-small tracking-[0.18em] uppercase">· Digital MENA</span>
     </a>
-    <nav class="flex items-center gap-5 text-sm text-white/80">
-      <a class="hover:text-white" href={`${navPrefix}/services`}>{s.services}</a>
-      <a class="hover:text-white" href={`${navPrefix}/work`}>{s.work}</a>
-      <a class="hover:text-white" href={`${navPrefix}/about`}>{s.about}</a>
-      <a class="hover:text-white" href={`${navPrefix}/blog`}>{s.blog}</a>
-      <a class="hover:text-white" href={`${navPrefix}/contact`}>{s.contact}</a>
-      <a class="ml-2 rounded-full border border-white/15 px-4 py-2 hover:border-white/30 hover:text-white"
-         href="mailto:contact@zenithdigital.me">{s.email_cta}</a>
-      <LanguageSwitcher locale={locale} />
+
+    <!-- Desktop nav (hidden below lg breakpoint) -->
+    <nav class="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
+      <a class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200" href={`${navPrefix}/practice`}>{s.practice}</a>
+      <a class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200" href={`${navPrefix}/services`}>{s.services}</a>
+      <a class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200" href={`${navPrefix}/thinking`}>{s.thinking}</a>
+      <a class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200" href={`${navPrefix}/about`}>{s.about}</a>
     </nav>
+
+    <!-- Right side: CTA + language switcher + hamburger -->
+    <div class="flex items-center gap-4">
+
+      <!-- The only filled button on the site -->
+      <a
+        href={`${navPrefix}/contact`}
+        class="hidden lg:inline-flex items-center rounded-full bg-bg-inverse text-bg-primary px-5 py-2 font-display font-normal text-small hover:opacity-90 transition-opacity duration-200"
+      >
+        {s.start_project}
+      </a>
+
+      <LanguageSwitcher locale={locale} />
+
+      <!-- Hamburger (mobile only) -->
+      <button
+        id="menu-open"
+        class="flex lg:hidden items-center justify-center p-1 text-text-secondary hover:text-text-primary transition-colors duration-200"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+    </div>
   </div>
 </header>
+
+<!--
+  Mobile overlay — z-50, placed after <header> in DOM so it stacks on top naturally.
+  When open, covers the full viewport including the header bar.
+-->
+<div
+  id="mobile-nav"
+  class="fixed inset-0 z-50 bg-bg-primary flex-col px-[clamp(20px,4vw,56px)] py-8 hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation menu"
+>
+
+  <!-- Top row: logo + close button -->
+  <div class="flex items-center justify-between mb-12">
+    <a href={logoHref} dir="ltr" class="flex items-baseline gap-2">
+      <span class="font-display text-text-primary font-medium text-body">Zenith</span>
+      <span class="font-display text-text-quaternary font-normal text-small tracking-[0.18em] uppercase">· Digital MENA</span>
+    </a>
+    <button
+      id="menu-close"
+      class="flex items-center justify-center p-1 text-text-secondary hover:text-text-primary transition-colors duration-200"
+      aria-label="Close navigation"
+    >
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Overlay nav links (large type) -->
+  <nav class="flex flex-col gap-8 flex-1" aria-label="Mobile navigation">
+    <a class="font-display text-subtitle text-text-primary font-normal hover:text-text-secondary transition-colors duration-200" href={`${navPrefix}/practice`}>{s.practice}</a>
+    <a class="font-display text-subtitle text-text-primary font-normal hover:text-text-secondary transition-colors duration-200" href={`${navPrefix}/services`}>{s.services}</a>
+    <a class="font-display text-subtitle text-text-primary font-normal hover:text-text-secondary transition-colors duration-200" href={`${navPrefix}/thinking`}>{s.thinking}</a>
+    <a class="font-display text-subtitle text-text-primary font-normal hover:text-text-secondary transition-colors duration-200" href={`${navPrefix}/about`}>{s.about}</a>
+    <a class="font-display text-subtitle text-text-primary font-normal hover:text-text-secondary transition-colors duration-200" href={`${navPrefix}/contact`}>{s.contact}</a>
+  </nav>
+
+  <!-- Bottom: language switcher + CTA -->
+  <div class="flex flex-col gap-4 pt-8 border-t border-border-subtle">
+    <LanguageSwitcher locale={locale} />
+    <a
+      href={`${navPrefix}/contact`}
+      class="inline-flex items-center justify-center rounded-full bg-bg-inverse text-bg-primary px-6 py-3.5 font-display font-normal text-body"
+    >
+      {s.start_project}
+    </a>
+  </div>
+
+</div>
+
+<style>
+  /*
+    Compact-on-scroll behavior.
+    Implemented in a <style> block (not Tailwind arbitrary variants) because
+    descendant selectors and multi-property transitions are cleaner here.
+
+    Transitions live on the child elements (.header-inner, .logo-wordmark,
+    .logo-subtitle), not on #site-header itself, to avoid transitioning
+    border and background on every scroll event.
+  */
+
+  .header-inner {
+    transition: padding-top 300ms ease, padding-bottom 300ms ease;
+  }
+
+  .logo-wordmark {
+    transition: font-size 300ms ease;
+  }
+
+  .logo-subtitle {
+    transition: opacity 300ms ease;
+  }
+
+  /* Compact state — JS adds .is-compact to #site-header at scrollY > 80 */
+
+  #site-header.is-compact .header-inner {
+    padding-top: 0.625rem;    /* 10px — equivalent to py-2.5 */
+    padding-bottom: 0.625rem;
+  }
+
+  #site-header.is-compact .logo-wordmark {
+    font-size: 0.875rem;      /* 14px — same as text-small */
+  }
+
+  #site-header.is-compact .logo-subtitle {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  // Compact-on-scroll
+  // TODO: rebind on astro:page-load when ViewTransitions is enabled
+  const header = document.getElementById('site-header');
+  const onScroll = () => {
+    header?.classList.toggle('is-compact', window.scrollY > 80);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // apply immediately — handles back-nav at scrollY > 80
+
+  // Mobile overlay toggle
+  const menuOpen  = document.getElementById('menu-open');
+  const menuClose = document.getElementById('menu-close');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  function openMenu() {
+    mobileNav?.classList.remove('hidden');
+    mobileNav?.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+    menuOpen?.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    mobileNav?.classList.add('hidden');
+    mobileNav?.classList.remove('flex');
+    document.body.style.overflow = '';
+    menuOpen?.setAttribute('aria-expanded', 'false');
+  }
+
+  menuOpen?.addEventListener('click', openMenu);
+  menuClose?.addEventListener('click', closeMenu);
+
+  // Escape key closes the overlay
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav && !mobileNav.classList.contains('hidden')) {
+      closeMenu();
+    }
+  });
+</script>

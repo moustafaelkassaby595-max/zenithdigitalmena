@@ -14,14 +14,14 @@ const arPath = locale === 'ar' ? pathname : ('/ar' + (pathname === '/' ? '/' : p
 const s = strings[locale as 'en' | 'ar'].switcher;
 ---
 
-<div class="flex items-center gap-1.5 text-sm ml-3">
+<div class="flex items-center gap-1.5 text-sm">
   <a
     href={enPath}
-    class={locale === 'en' ? 'text-white underline underline-offset-2' : 'text-white/50 hover:text-white transition-colors'}
+    class={locale === 'en' ? 'text-text-primary underline underline-offset-2' : 'text-text-tertiary hover:text-text-primary transition-colors duration-200'}
   >{s.en}</a>
-  <span class="text-white/25">/</span>
+  <span class="text-text-quaternary">/</span>
   <a
     href={arPath}
-    class={locale === 'ar' ? 'text-white underline underline-offset-2' : 'text-white/50 hover:text-white transition-colors'}
+    class={locale === 'ar' ? 'text-text-primary underline underline-offset-2' : 'text-text-tertiary hover:text-text-primary transition-colors duration-200'}
   >{s.ar}</a>
 </div>

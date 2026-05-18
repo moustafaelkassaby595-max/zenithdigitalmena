@@ -7,19 +7,91 @@ interface Props {
 
 const { locale = 'en' } = Astro.props;
 const s = strings[locale as 'en' | 'ar'].footer;
+const navs = strings[locale as 'en' | 'ar'].nav;
+const navPrefix = locale === 'ar' ? '/ar' : '';
+
+// AR tagline fallback — ar.footer.tagline is intentionally empty; fall back to EN
+const taglineFallback = strings.en.footer.tagline;
+const tagline = s.tagline || taglineFallback;
 ---
 
-<footer class="border-t border-white/10 mt-20">
-  <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col gap-3 text-sm text-white/70">
-    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-      <span class="text-white/90 font-medium" dir="ltr">{s.studio_name}</span>
-      <span>•</span>
-      <a class="hover:text-white" href="mailto:contact@zenithdigital.me">
-        contact@zenithdigital.me
-      </a>
+<footer class="bg-bg-secondary border-t border-border-subtle">
+  <div class="mx-auto max-w-[1280px] px-[clamp(20px,4vw,56px)] py-[clamp(64px,8vh,96px)]">
+
+    <!-- 3-column grid: brand / navigation / contact -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+
+      <!-- Column 1: Brand + tagline -->
+      <div>
+        <span dir="ltr" class="font-display font-medium text-body text-text-primary">{s.studio_name}</span>
+        <p class="font-display font-normal text-body text-text-secondary mt-3 max-w-xs">{tagline}</p>
+      </div>
+
+      <!-- Column 2: Navigation links -->
+      <div>
+        <span class="font-mono text-eyebrow text-text-quaternary tracking-[0.18em] uppercase mb-6 block">{s.nav_label}</span>
+        <nav class="flex flex-col gap-3" aria-label="Footer navigation">
+          <a class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200" href={`${navPrefix}/practice`}>{navs.practice}</a>
+          <a class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200" href={`${navPrefix}/services`}>{navs.services}</a>
+          <a class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200" href={`${navPrefix}/thinking`}>{navs.thinking}</a>
+          <a class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200" href={`${navPrefix}/about`}>{navs.about}</a>
+          <a class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200" href={`${navPrefix}/contact`}>{navs.contact}</a>
+        </nav>
+      </div>
+
+      <!-- Column 3: Contact (email widget + LinkedIn) -->
+      <div>
+        <span class="font-mono text-eyebrow text-text-quaternary tracking-[0.18em] uppercase mb-6 block">{s.contact_label}</span>
+        <div class="flex flex-col gap-3">
+          <button
+            id="footer-email-btn"
+            data-copied={s.email_copied}
+            class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200 text-start cursor-pointer"
+          >contact@zenithdigital.me</button>
+          <a
+            href="#"
+            class="font-display text-small text-text-secondary font-normal hover:text-text-primary transition-colors duration-200"
+          >{s.linkedin}</a>
+        </div>
+      </div>
+
     </div>
-    <div class="text-white/50">
-      © {new Date().getFullYear()} {s.copyright}
+
+    <!-- Bottom row: studio name + copyright left / made in dubai right -->
+    <div class="flex flex-wrap items-center justify-between gap-y-2 pt-8 border-t border-border-subtle">
+      <div class="flex items-center gap-2 font-display text-small text-text-quaternary">
+        <span dir="ltr">{s.studio_name}</span>
+        <span aria-hidden="true">·</span>
+        <span>© {new Date().getFullYear()} {s.copyright}</span>
+      </div>
+      <span class="font-display text-small text-text-quaternary">{s.made_in_dubai}</span>
     </div>
+
   </div>
 </footer>
+
+<script>
+  const btn = document.getElementById('footer-email-btn') as HTMLButtonElement | null;
+  if (btn) {
+    const email = 'contact@zenithdigital.me';
+    const originalText = btn.textContent ?? email;
+    const copiedText = btn.dataset.copied ?? 'Copied!';
+
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        // Fallback for older browsers / non-HTTPS contexts
+        const ta = document.createElement('textarea');
+        ta.value = email;
+        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      btn.textContent = copiedText;
+      setTimeout(() => { btn.textContent = originalText; }, 2000);
+    });
+  }
+</script>

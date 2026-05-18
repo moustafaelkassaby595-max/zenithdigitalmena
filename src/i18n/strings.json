@@ -17,7 +17,9 @@
       "tagline": "A digital studio engineering brand systems, products, and intelligent automation for the GCC's most ambitious operators.",
       "made_in_dubai": "Made in Dubai",
       "email_copied": "Copied!",
-      "linkedin": "LinkedIn"
+      "linkedin": "LinkedIn",
+      "nav_label": "Navigation",
+      "contact_label": "Contact"
     },
     "switcher": {
       "en": "EN",
@@ -47,7 +49,9 @@
       "tagline": "",
       "made_in_dubai": "صُنع في دبي",
       "email_copied": "تم النسخ!",
-      "linkedin": "LinkedIn"
+      "linkedin": "LinkedIn",
+      "nav_label": "التنقل",
+      "contact_label": "تواصل"
     },
     "switcher": {
       "en": "EN",

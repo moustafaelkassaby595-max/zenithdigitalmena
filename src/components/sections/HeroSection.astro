@@ -1,0 +1,59 @@
+---
+// No motion JS — GSAP/ScrollTrigger lives in index.astro.
+---
+
+<section
+  data-section="hero"
+  class="bg-bg-primary min-h-screen"
+>
+  <div class="mx-auto max-w-[1280px] px-[clamp(20px,4vw,56px)] py-[clamp(80px,12vh,180px)]">
+    <div class="grid grid-cols-12 gap-x-8 items-center">
+
+      <!-- Cols 1–7: headline + subhead -->
+      <div class="col-span-12 lg:col-span-7">
+        <h1 class="font-display font-medium text-hero text-text-primary leading-[0.92] tracking-[-0.045em]">
+          Brand, product, and intelligent automation.<br />
+          Built for serious operators.
+        </h1>
+        <p class="mt-8 font-display font-normal text-lead text-text-secondary leading-[1.45] tracking-[-0.01em] max-w-[480px]">
+          A digital studio in Dubai. We work with founders,
+          family offices, and CMOs across the GCC.
+        </p>
+      </div>
+
+      <!-- Cols 8–12: three concentric circles -->
+      <div class="col-span-12 lg:col-span-5 flex items-center justify-center mt-20 lg:mt-0">
+        <svg
+          viewBox="0 0 620 620"
+          width="100%"
+          class="max-w-[480px] w-full text-accent-primary"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            data-circle="outer"
+            cx="310" cy="310" r="280"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+          />
+          <circle
+            data-circle="middle"
+            cx="310" cy="310" r="180"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+          />
+          <circle
+            data-circle="inner"
+            cx="318" cy="304" r="80"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+          />
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
